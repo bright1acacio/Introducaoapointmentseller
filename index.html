@@ -19,24 +19,17 @@
             --text-dim: #94a3b8;
             --glass: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 255, 255, 0.06);
+            --error: #ff4d4d;
         }
 
         * { box-sizing: border-box; transition: all 0.3s ease; scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
         
         body { background-color: var(--bg-deep); color: var(--text-main); font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; overflow-x: hidden; }
 
-        /* --- POP-UP DE IMERSÃO --- */
+        /* --- POP-UP DE ENTRADA --- */
         #immersion-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(3, 5, 8, 0.98); z-index: 9999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(25px); }
         .popup-content { max-width: 500px; padding: 50px; text-align: center; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 40px; }
         .btn-enter { background: var(--primary); color: #000; padding: 18px 50px; border-radius: 100px; font-weight: 900; text-transform: uppercase; cursor: pointer; border: none; box-shadow: 0 15px 35px var(--primary-glow); }
-
-        /* --- CONTROLADOR DE MÚSICA --- */
-        .music-control { position: fixed; top: 25px; right: 25px; z-index: 1000; background: var(--glass); border: 1px solid var(--glass-border); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--primary); }
-        .music-waves { display: flex; align-items: flex-end; gap: 3px; height: 18px; display: none; }
-        .music-waves span { width: 3px; background: var(--primary); animation: bounce 0.5s ease infinite alternate; }
-        .playing .music-waves { display: flex; }
-        .playing i { display: none; }
-        @keyframes bounce { from { height: 4px; } to { height: 18px; } }
 
         section { width: 100%; max-width: 1200px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 100px 20px; }
         .container { width: 100%; }
@@ -79,7 +72,7 @@
         .lifestyle { background: linear-gradient(rgba(3,5,8,0.7), rgba(3,5,8,0.7)), url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=1920'); background-size: cover; background-attachment: fixed; text-align: center; }
 
         /* 10. QUIZ */
-        .quiz-box { background: #000; border: 1px solid var(--primary-glow); padding: 60px; border-radius: 40px; max-width: 850px; margin: 0 auto; text-align: center; }
+        .quiz-box { background: #000; border: 1px solid var(--primary-glow); padding: 60px; border-radius: 40px; max-width: 850px; margin: 0 auto; text-align: center; min-height: 450px; display: flex; flex-direction: column; justify-content: center; }
         .quiz-step { display: none; }
         .quiz-step.active { display: block; animation: fadeIn 0.5s ease; }
         .quiz-btn { width: 100%; padding: 20px; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 15px; color: #fff; margin-bottom: 15px; cursor: pointer; font-weight: 600; text-align: left; }
@@ -103,10 +96,7 @@
     </div>
 </div>
 
-<audio id="bgMusic" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3" type="audio/mpeg"></audio>
-<div class="music-control" id="musicBtn" onclick="toggleMusic()"><i class="fa-solid fa-play"></i><div class="music-waves"><span></span><span></span><span></span><span></span></div></div>
-
-<div class="sticky-footer"><a href="#quiz" class="btn-main">APLICAR PARA PARCERIA</a></div>
+<div class="sticky-footer"><a href="#quiz" class="btn-main">QUERO SER UM PARCEIRO</a></div>
 
 <!-- 1. HERO -->
 <section class="hero">
@@ -127,7 +117,7 @@
     <div class="hierarchy-grid">
         <div class="level-card active">
             <i class="fa-solid fa-headset"></i>
-            <h3>Appointment Seller</h3>
+            <h3>Appointment Setter</h3>
             <p>O Receptor. Responsável por Cold Calls, qualificação e agendamento estratégico.</p>
             <span class="badge" style="margin-top:20px; background:#fff; color:#000;">NÍVEL INICIAL</span>
         </div>
@@ -153,13 +143,13 @@
     </div>
 </section>
 
-<!-- 4. O PAPEL DO SELLER -->
+<!-- 4. O PAPEL DO SETTER -->
 <section>
     <div class="split-grid">
         <div>
             <span class="badge">O RECEPTOR</span>
             <h2>Sua primeira interação define o jogo.</h2>
-            <p style="margin-top: 20px;">Como Appointment Seller, você é o receptor de oportunidades. Seu trabalho é apresentar nossa solução e despertar o desejo de reunião. Você é a ponte entre a dor do cliente e a cura da Mantis.</p>
+            <p style="margin-top: 20px;">Como Appointment Setter, você é o receptor de oportunidades. Seu trabalho é apresentar nossa solução e despertar o desejo de reunião. Você é a ponte entre a dor do cliente e a cura da Mantis.</p>
         </div>
         <div class="level-card active">
             <h4 style="font-size: 28px; margin-bottom: 20px;">O Closer é seu maior aliado.</h4>
@@ -242,8 +232,8 @@
 <section>
     <div class="split-grid">
         <div class="calc-box">
-            <span class="badge">REMUNERAÇÃO SELLER</span>
-            <div class="res-val">5%</div>
+            <span class="badge">REMUNERAÇÃO SETTER</span>
+            <div class="res-val" style="font-size: 64px; font-weight: 800; color: #fff; font-family: 'Outfit';">5%</div>
             <p style="color: #fff; font-weight: 800;">Por cliente fechado pelo Closer.</p>
             <p style="margin-top: 20px;">+ 7.5% de comissão especial para clientes trazidos por indicação própria.</p>
         </div>
@@ -277,7 +267,7 @@
     <div class="hierarchy-grid">
         <div class="level-card"><h4>Reuniões de Alinhamento</h4><p>Dúvidas e aconselhamentos constantes com o time.</p></div>
         <div class="level-card"><h4>Dashboard de Metas</h4><p>Veja seu crescimento e bônus em tempo real.</p></div>
-        <div class="level-card"><h4>Comunidade</h4><p>Troca de experiências com outros Sellers e Closers.</p></div>
+        <div class="level-card"><h4>Comunidade</h4><p>Troca de experiências com outros Setters e Closers.</p></div>
     </div>
 </section>
 
@@ -319,39 +309,76 @@
 <!-- 15. QUIZ DE QUALIFICAÇÃO & FINAL -->
 <section id="quiz">
     <div class="quiz-box">
+        <!-- Passo 1 -->
         <div id="q1" class="quiz-step active">
             <span class="badge">PASSO 01/03</span>
-            <h3>Você está pronto para o volume de 150 leads semanais?</h3>
+            <h3>O que você prioriza na sua carreira hoje?</h3>
             <div class="quiz-options">
-                <button class="quiz-btn" onclick="nextQ(2)">A. Sim, nasci para vender e agendar.</button>
-                <button class="quiz-btn" onclick="nextQ(2)">B. Talvez, prefiro ir devagar no começo.</button>
+                <button class="quiz-btn" onclick="rejectCandidate()">A. Estabilidade CLT e salário fixo garantido.</button>
+                <button class="quiz-btn" onclick="nextQ(2)">B. Liberdade, ganhos ilimitados e ser dono do tempo.</button>
             </div>
         </div>
+        <!-- Passo 2 -->
         <div id="q2" class="quiz-step">
             <span class="badge">PASSO 02/03</span>
-            <h3>Qual sua maior motivação hoje?</h3>
+            <h3>Você tem disciplina para contatar o mínimo de 150 leads semanais?</h3>
             <div class="quiz-options">
-                <button class="quiz-btn" onclick="nextQ(3)">A. Construir liberdade e patrimônio na Mantis.</button>
-                <button class="quiz-btn" onclick="nextQ(3)">B. Ter um salário fixo garantido no final do mês.</button>
+                <button class="quiz-btn" onclick="nextQ(3)">A. Sim, meu foco é no resultado e no volume.</button>
+                <button class="quiz-btn" onclick="rejectCandidate()">B. Talvez, prefiro ir devagar e trabalhar sob demanda.</button>
             </div>
         </div>
+        <!-- Passo 3 -->
         <div id="q3" class="quiz-step">
-            <span class="badge" style="background: var(--primary); color: #000;">PERFIL APROVADO</span>
-            <h2>Você tem a Essência Mantis.</h2>
-            <p style="margin: 30px 0;">O mercado não espera por hesitantes. Sua jornada para se tornar um Closer de Respeito começa agora.</p>
-            <a target="_blank" href="https://wa.me/5521964666813?text=Validei%20meu%20perfil%20na%20página.%20Quero%20ser%20um%20Appointment%20Seller." class="btn-enter" style="text-decoration:none; display:inline-block;">REIVINDICAR VAGA</a>
+            <span class="badge">PASSO 03/03</span>
+            <h3>Qual sua visão sobre o futuro da tecnologia?</h3>
+            <div class="quiz-options">
+                <button class="quiz-btn" onclick="finishQuiz()">A. É a única forma de prosperar e escalar negócios.</button>
+                <button class="quiz-btn" onclick="rejectCandidate()">B. É apenas uma ferramenta de suporte secundária.</button>
+            </div>
+        </div>
+        <!-- Aprovação -->
+        <div id="qSuccess" class="quiz-step">
+            <div class="badge" style="background: var(--primary); color: #000;">PERFIL APROVADO</div>
+            <h2 style="margin-bottom: 20px;">Você tem a Essência Mantis.</h2>
+            <p style="margin-bottom: 40px;">Identificamos que você possui a ambição necessária para nossa estrutura. Clique abaixo para reivindicar sua vaga.</p>
+            <a target="_blank" href="https://wa.me/5521964666813?text=Validei%20meu%20perfil%20na%20página%20Mantis.%20Sou%20um%20Appointment%20Setter%20de%20elite%20e%20quero%20começar." class="btn-enter" style="text-decoration:none; display:inline-block;">REIVINDICAR VAGA</a>
+        </div>
+        <!-- Rejeição -->
+        <div id="qFail" class="quiz-step">
+            <div class="badge" style="background: var(--error); color: #fff;">PERFIL NÃO ALINHADO</div>
+            <h2 style="margin-bottom: 20px;">Obrigado pelo interesse.</h2>
+            <p style="margin-bottom: 30px;">Infelizmente, seu perfil atual não se alinha à nossa cultura de alta performance e meritocracia agressiva. Buscamos sócios com fome absoluta de escala.</p>
+            <button class="btn-enter" style="background:#333; color:#fff;" onclick="resetQuiz()">TENTAR NOVAMENTE</button>
         </div>
     </div>
 </section>
 
+<!-- FECHAMENTO SURF -->
+<section style="text-align:center; padding: 150px 20px; background: radial-gradient(circle at center, var(--primary-dim) 0%, transparent 80%);">
+    <div class="surf-quote">"Assim como no mar, quem não se posiciona perde a onda e toma caldo. No mundo dos negócios não é diferente."</div>
+    <h2 style="font-family:'Outfit'; font-size: 32px; color:var(--primary);">O Mercado não espera por Hesitantes.</h2>
+</section>
+
 <script>
-    const music = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
     const popup = document.getElementById('immersion-popup');
 
-    function closePopup() { popup.style.display = 'none'; music.play(); musicBtn.classList.add('playing'); }
-    function toggleMusic() { if (music.paused) { music.play(); musicBtn.classList.add('playing'); } else { music.pause(); musicBtn.classList.remove('playing'); } }
-    function nextQ(s) { document.querySelectorAll('.quiz-step').forEach(e => e.classList.remove('active')); document.getElementById('q' + s).classList.add('active'); }
+    function closePopup() { popup.style.display = 'none'; }
+    function nextQ(s) { 
+        document.querySelectorAll('.quiz-step').forEach(e => e.classList.remove('active')); 
+        document.getElementById('q' + s).classList.add('active'); 
+    }
+    function rejectCandidate() {
+        document.querySelectorAll('.quiz-step').forEach(e => e.classList.remove('active')); 
+        document.getElementById('qFail').classList.add('active'); 
+    }
+    function finishQuiz() {
+        document.querySelectorAll('.quiz-step').forEach(e => e.classList.remove('active')); 
+        document.getElementById('qSuccess').classList.add('active'); 
+    }
+    function resetQuiz() {
+        document.querySelectorAll('.quiz-step').forEach(e => e.classList.remove('active')); 
+        document.getElementById('q1').classList.add('active'); 
+    }
 
     const updateGlow = (e) => {
         const h = document.getElementById('hero'); const r = h.getBoundingClientRect();
